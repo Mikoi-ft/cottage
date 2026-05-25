@@ -24,14 +24,6 @@ export default function Footer() {
               <MessageCircle size={16} /> WhatsApp
             </a>
             <a
-              href={`https://t.me/${CONTACTS.telegram}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 hover:text-white"
-            >
-              <Send size={16} /> Telegram
-            </a>
-            <a
               href={`https://instagram.com/${CONTACTS.instagram}`}
               target="_blank"
               rel="noopener noreferrer"

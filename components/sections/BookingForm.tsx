@@ -36,7 +36,7 @@ export default function BookingForm({ checkIn, checkOut, total, nights }: Props)
     return `Здравствуйте! Хочу забронировать коттедж с ${formatDateRu(checkIn)} по ${formatDateRu(checkOut)} (${nights} ночей), ${guests} гостей. Имя: ${name}. Итого: ${formatPrice(total)}.${comment ? ` Комментарий: ${comment}` : ""}`;
   };
 
-  const handleSubmit = async (channel: "whatsapp" | "telegram") => {
+  const handleSubmit = async (channel: "whatsapp") => {
     setError(null);
     if (!name.trim() || phone.replace(/\D/g, "").length < 12) {
       setError("Заполните имя и корректный телефон");
@@ -66,8 +66,6 @@ export default function BookingForm({ checkIn, checkOut, total, nights }: Props)
       const message = encodeURIComponent(buildMessage());
       if (channel === "whatsapp") {
         window.open(`https://wa.me/${CONTACTS.whatsapp}?text=${message}`, "_blank");
-      } else {
-        window.open(`https://t.me/${CONTACTS.telegram}?text=${message}`, "_blank");
       }
     } catch (e) {
       setError(e instanceof Error ? e.message : "Что-то пошло не так");
@@ -139,13 +137,6 @@ export default function BookingForm({ checkIn, checkOut, total, nights }: Props)
           >
             <Send size={18} />
             {submitting ? "Отправка..." : "В WhatsApp"}
-          </button>
-          <button
-            onClick={() => handleSubmit("telegram")}
-            disabled={submitting}
-            className="inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 px-6 py-4 font-medium text-ink transition hover:border-lake disabled:opacity-60"
-          >
-            В Telegram
           </button>
         </div>
 
