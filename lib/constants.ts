@@ -1,76 +1,108 @@
-import { Bed, Users, Wifi, ChefHat, Flame, Car, Waves, MapPin } from "lucide-react";
+import { Bed, Users, Wifi, Tv, Microwave, WashingMachine, Flame, UtensilsCrossed, Waves, Baby } from "lucide-react";
 
 export const COTTAGE = {
-  name: "Дом у Иссык-Куля", // TODO: реальное название
-  tagline: "Дом у воды, где время замедляется",
-  // TODO: реальные координаты
-  coords: { lat: 42.6500, lng: 77.0833 },
-  address: "с. Тамчы, Иссык-Кульская область", // TODO
-  distanceFromBishkek: "260 км от Бишкека",
+  name: "Квартира в Chaika Resort",
+  tagline: "Отдых у воды на Иссык-Куле — первая береговая линия",
+  coords: { lat: 42.6411, lng: 76.9897 }, // с. Чон-Сары-Ой, Chaika Resort
+  address: "Chaika Resort, с. Чон-Сары-Ой, Иссык-Кульская область",
+  distanceFromBishkek: "230 км от Бишкека · 14 км от Чолпон-Аты",
 };
 
 export const CONTACTS = {
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "996700000000",
-  instagram: process.env.NEXT_PUBLIC_INSTAGRAM_USERNAME ?? "your_cottage",
-  phone: "+996 700 000 000", // TODO
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "996508516651",
+  phone: "+996 508 516 651",
 };
 
 export const AMENITIES = [
-  { icon: Bed, label: "1 спальня" },
+  { icon: Bed, label: "Спальня + раскладной диван" },
   { icon: Users, label: "до 4 гостей" },
   { icon: Wifi, label: "Wi-Fi" },
-  { icon: ChefHat, label: "Кухня" },
+  { icon: Tv, label: "Телевизор" },
+  { icon: Microwave, label: "Микроволновка" },
+  { icon: WashingMachine, label: "Стиральная машина" },
+  { icon: UtensilsCrossed, label: "Кухонная утварь" },
   { icon: Flame, label: "Мангал" },
-  { icon: Car, label: "Парковка" },
-  { icon: Waves, label: "Выход к воде" },
-  { icon: MapPin, label: "100 м до пляжа" },
+  { icon: Waves, label: "Первая береговая линия" },
+  { icon: Baby, label: "Аниматоры для детей (лето)" },
 ];
 
-export const SEASONS = {
-  high: { name: "Высокий сезон", months: [6, 7, 8], pricePerNight: 18000 },
-  mid: { name: "Межсезонье", months: [5, 9], pricePerNight: 12000 },
-  low: { name: "Низкий сезон", months: [1, 2, 3, 4, 10, 11, 12], pricePerNight: 8000 },
-};
+// Ценовые периоды по конкретным датам (формат MM-DD)
+export const PRICE_PERIODS = [
+  { from: "05-01", to: "06-14", price: 8000, label: "1 мая – 14 июня" },
+  { from: "06-15", to: "07-05", price: 10000, label: "15 июня – 5 июля" },
+  { from: "07-06", to: "08-18", price: 15000, label: "6 июля – 18 августа" },
+  { from: "08-18", to: "09-15", price: 10000, label: "18 августа – 15 сентября" },
+];
+
+export const DEFAULT_PRICE = 8000; // вне сезона
 
 export const MIN_NIGHTS = 2;
 
+export const LONG_STAY_DISCOUNT = { minNights: 5, percent: 10 };
+
 export const INCLUDED = [
   "Постельное бельё и полотенца",
-  "Wi-Fi",
-  "Уборка после выезда",
+  "Вся кухонная утварь и техника",
+  "Wi-Fi и телевизор",
+  "Доступ к территории резорта (3 ресторана и столовая)",
+];
+
+export const RESORT_FEATURES = [
+  "3 ресторана и столовая на территории",
+  "Первая береговая линия, 3 вида пляжа",
+  "Летом — бесплатные аниматоры для детей",
 ];
 
 // TODO: реальные фото — заменить на URL из Supabase Storage или Cloudinary
 export const GALLERY = [
-  { src: "/images/placeholder-1.jpg", alt: "Вид на коттедж на закате" },
-  { src: "/images/placeholder-2.jpg", alt: "Балкон" },
-  { src: "/images/placeholder-3.jpg", alt: "Гостиная" },
-  { src: "/images/placeholder-4.jpg", alt: "Главная спальня" },
-  { src: "/images/placeholder-5.jpg", alt: "Кухня" },
-  { src: "/images/placeholder-7.jpg", alt: "Мангальная зона" },
-  { src: "/images/placeholder-8.jpg", alt: "Выход к воде" },
+  { src: "/images/placeholder-1.jpg", alt: "Вид на озеро" },
+  { src: "/images/placeholder-2.jpg", alt: "Спальня с двуспальной кроватью" },
+  { src: "/images/placeholder-3.jpg", alt: "Гостиная-кухня" },
+  { src: "/images/placeholder-4.jpg", alt: "Кухонная зона" },
+  { src: "/images/placeholder-5.jpg", alt: "Раскладной диван в гостиной" },
+  { src: "/images/placeholder-6.jpg", alt: "Мангальная зона" },
+  { src: "/images/placeholder-7.jpg", alt: "Территория резорта" },
+  { src: "/images/placeholder-8.jpg", alt: "Пляж и берег" },
 ];
 
+// TODO: реальные отзывы
+export const REVIEWS = [
+  {
+    name: "Айгуль",
+    date: "Август 2025",
+    text: "Отличная квартира, всё чисто и уютно. Дети были в восторге от аниматоров и пляжа. Вернёмся!",
+  },
+  {
+    name: "Денис",
+    date: "Июль 2025",
+    text: "Первая линия — до воды пара минут. Рестораны прямо на территории, очень удобно с детьми.",
+  },
+  {
+    name: "Семья Касымовых",
+    date: "Июнь 2025",
+    text: "Всё для комфортного проживания: стиралка, кухня, мангал. Бронировали на неделю — не пожалели.",
+  },
+];
 
 export const FAQ = [
   {
     q: "Как происходит оплата?",
-    a: "Предоплата 30% переводом на банковскую карту для брони дат. Остальная сумма — наличными или переводом при заезде.",
+    a: "Предоплата 30% переводом для брони дат. Остальная сумма — при заезде.",
   },
   {
-    q: "Можно ли с животными?",
-    a: "По согласованию. Напишите в WhatsApp — обсудим.",
+    q: "Сколько человек помещается?",
+    a: "До 4 человек: двуспальная кровать в спальне и раскладной диван в гостиной.",
+  },
+  {
+    q: "Что входит на территории резорта?",
+    a: "3 ресторана и столовая, первая береговая линия с тремя видами пляжа. Летом работают бесплатные аниматоры для детей.",
+  },
+  {
+    q: "Есть ли скидка за длительное проживание?",
+    a: "Да, при бронировании от 5 суток — скидка 10%.",
   },
   {
     q: "Что взять с собой?",
-    a: "Личные вещи и продукты. Всё остальное (постель, полотенца, посуда, дрова) уже на месте.",
-  },
-  {
-    q: "Время заезда и выезда?",
-    a: "Заезд с 14:00, выезд до 12:00. Раннее заселение и поздний выезд — по договорённости.",
-  },
-  {
-    q: "Есть ли депозит?",
-    a: "Да, 5000 сом при заезде. Возвращается при выезде, если имущество в порядке.",
+    a: "Личные вещи и продукты. Всё остальное (постель, полотенца, посуда, техника) уже в квартире.",
   },
 ];

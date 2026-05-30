@@ -8,7 +8,7 @@ export default function LodgingSchema() {
     description: COTTAGE.tagline,
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Тамчы", // TODO
+      addressLocality: "Чон-Сары-Ой",
       addressRegion: "Иссык-Кульская область",
       addressCountry: "KG",
     },
@@ -18,7 +18,7 @@ export default function LodgingSchema() {
       longitude: COTTAGE.coords.lng,
     },
     telephone: CONTACTS.phone,
-    priceRange: "8000–18000 сом / ночь",
+    priceRange: "8000–15000 сом / сутки",
   };
 
   return (

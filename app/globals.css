@@ -10,6 +10,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* react-day-picker overrides */
 .rdp {
   --rdp-accent-color: #2C5F7C;
   --rdp-background-color: #2C5F7C20;

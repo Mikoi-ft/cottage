@@ -1,4 +1,4 @@
-import { Phone, MessageCircle, Send, Instagram } from "lucide-react";
+import { Phone, MessageCircle } from "lucide-react";
 import { CONTACTS, COTTAGE } from "@/lib/constants";
 
 export default function Footer() {
@@ -22,14 +22,6 @@ export default function Footer() {
               className="inline-flex items-center gap-2 hover:text-white"
             >
               <MessageCircle size={16} /> WhatsApp
-            </a>
-            <a
-              href={`https://instagram.com/${CONTACTS.instagram}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 hover:text-white"
-            >
-              <Instagram size={16} /> Instagram
             </a>
           </div>
         </div>

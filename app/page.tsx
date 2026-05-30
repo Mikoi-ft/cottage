@@ -3,6 +3,7 @@ import Gallery from "@/components/sections/Gallery";
 import Amenities from "@/components/sections/Amenities";
 import Location from "@/components/sections/Location";
 import BookingCalendar from "@/components/sections/BookingCalendar";
+import Reviews from "@/components/sections/Reviews";
 import FAQ from "@/components/sections/FAQ";
 import Footer from "@/components/sections/Footer";
 import LodgingSchema from "@/components/schema/LodgingSchema";
@@ -33,6 +34,7 @@ export default async function HomePage() {
         <Amenities />
         <Location />
         <BookingCalendar bookedDates={bookedDates} />
+        <Reviews />
         <FAQ />
         <Footer />
       </main>

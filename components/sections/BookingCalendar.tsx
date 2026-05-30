@@ -5,7 +5,7 @@ import { DayPicker, type DateRange } from "react-day-picker";
 import { ru } from "date-fns/locale";
 import "react-day-picker/style.css";
 import { calculateTotal, formatPrice } from "@/lib/pricing";
-import { INCLUDED, MIN_NIGHTS, SEASONS } from "@/lib/constants";
+import { INCLUDED, MIN_NIGHTS, PRICE_PERIODS, LONG_STAY_DISCOUNT } from "@/lib/constants";
 import BookingForm from "./BookingForm";
 
 interface Props {
@@ -59,21 +59,19 @@ export default function BookingCalendar({ bookedDates }: Props) {
 
           <div>
             <div className="rounded-2xl bg-cream p-6 md:p-8">
-              <h3 className="font-serif text-2xl">Цены</h3>
+              <h3 className="font-serif text-2xl">Цены за сутки</h3>
               <ul className="mt-4 space-y-2 text-muted">
-                <li className="flex justify-between">
-                  <span>{SEASONS.high.name} (июнь–август)</span>
-                  <span className="text-ink">{formatPrice(SEASONS.high.pricePerNight)}/ночь</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>{SEASONS.mid.name} (май, сентябрь)</span>
-                  <span className="text-ink">{formatPrice(SEASONS.mid.pricePerNight)}/ночь</span>
-                </li>
-                <li className="flex justify-between">
-                  <span>{SEASONS.low.name}</span>
-                  <span className="text-ink">{formatPrice(SEASONS.low.pricePerNight)}/ночь</span>
-                </li>
+                {PRICE_PERIODS.map((p) => (
+                  <li key={p.label} className="flex justify-between gap-4">
+                    <span>{p.label}</span>
+                    <span className="whitespace-nowrap text-ink">{formatPrice(p.price)}</span>
+                  </li>
+                ))}
               </ul>
+
+              <p className="mt-4 text-sm text-lake">
+                При брони от {LONG_STAY_DISCOUNT.minNights} суток — скидка {LONG_STAY_DISCOUNT.percent}%
+              </p>
 
               <div className="mt-6 border-t border-ink/10 pt-6">
                 <p className="text-sm font-medium text-ink">В стоимость входит:</p>
@@ -88,6 +86,16 @@ export default function BookingCalendar({ bookedDates }: Props) {
                 <div className="mt-6 border-t border-ink/10 pt-6">
                   <div className="flex justify-between text-muted">
                     <span>{nights} {pluralNights(nights)}</span>
+                    <span className="text-ink">{formatPrice(calculation.subtotal)}</span>
+                  </div>
+                  {calculation.hasDiscount && (
+                    <div className="mt-1 flex justify-between text-sm text-lake">
+                      <span>Скидка {LONG_STAY_DISCOUNT.percent}%</span>
+                      <span>−{formatPrice(calculation.discount)}</span>
+                    </div>
+                  )}
+                  <div className="mt-2 flex justify-between border-t border-ink/10 pt-2 font-medium">
+                    <span className="text-ink">Итого</span>
                     <span className="text-ink">{formatPrice(calculation.total)}</span>
                   </div>
                   {!isValidRange && (

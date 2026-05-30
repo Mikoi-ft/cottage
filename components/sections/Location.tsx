@@ -1,5 +1,5 @@
 import { MapPin } from "lucide-react";
-import { COTTAGE } from "@/lib/constants";
+import { COTTAGE, RESORT_FEATURES } from "@/lib/constants";
 
 export default function Location() {
   return (
@@ -9,9 +9,8 @@ export default function Location() {
 
         <div className="mt-10 grid gap-8 md:grid-cols-2 md:gap-12">
           <div className="relative aspect-[4/3] overflow-hidden rounded-2xl bg-white md:aspect-auto">
-            {/* 2GIS embed — самый рабочий вариант для КР */}
             <iframe
-              src={`https://widgets.2gis.com/widget?type=firmsonmap&options=%7B%22pos%22%3A%7B%22lat%22%3A${COTTAGE.coords.lat}%2C%22lon%22%3A${COTTAGE.coords.lng}%2C%22zoom%22%3A14%7D%7D`}
+              src={`https://yandex.ru/map-widget/v1/?ll=${COTTAGE.coords.lng}%2C${COTTAGE.coords.lat}&z=14&pt=${COTTAGE.coords.lng},${COTTAGE.coords.lat},pm2rdm`}
               className="h-full w-full border-0"
               loading="lazy"
               title="Карта"
@@ -28,8 +27,10 @@ export default function Location() {
             </div>
 
             <div className="mt-8 space-y-3 text-muted">
-              <p>До пляжа - 3 минут пешком</p>
-              <p>Магазин - 300 м</p>
+              {RESORT_FEATURES.map((f) => (
+                <p key={f}>— {f}</p>
+              ))}
+              <p>— 10 км от аэропорта Тамчы</p>
             </div>
           </div>
         </div>

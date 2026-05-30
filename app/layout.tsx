@@ -18,12 +18,12 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://your-cottage.vercel
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "Дом у Иссык-Куля - аренда коттеджа на берегу озера",
+  title: "Квартира в Chaika Resort — аренда на Иссык-Куле",
   description:
-    "Уютный коттедж с видом на Иссык-Куль. 3 спальни, баня, мангал, выход к воде. Бронирование напрямую без посредников.",
+    "Квартира-студия в Chaika Resort на первой береговой линии Иссык-Куля. До 4 гостей, мангал, Wi-Fi, рестораны на территории. Бронирование напрямую.",
   openGraph: {
-    title: "Дом у Иссык-Куля",
-    description: "Уютный коттедж на берегу озера. Бронирование напрямую.",
+    title: "Квартира в Chaika Resort",
+    description: "Квартира на первой береговой линии Иссык-Куля. Бронирование напрямую.",
     type: "website",
     locale: "ru_RU",
     url: siteUrl,
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
         url: "/images/og-image.jpg", // TODO: реальное фото
         width: 1200,
         height: 630,
-        alt: "Дом у Иссык-Куля",
+        alt: "Квартира в Chaika Resort",
       },
     ],
   },
