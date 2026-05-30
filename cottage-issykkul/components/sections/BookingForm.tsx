@@ -33,10 +33,10 @@ export default function BookingForm({ checkIn, checkOut, total, nights }: Props)
   };
 
   const buildMessage = () => {
-    return `Здравствуйте! Хочу забронировать коттедж с ${formatDateRu(checkIn)} по ${formatDateRu(checkOut)} (${nights} ночей), ${guests} гостей. Имя: ${name}. Итого: ${formatPrice(total)}.${comment ? ` Комментарий: ${comment}` : ""}`;
+    return `Здравствуйте! Хочу забронировать квартиру в Chaika Resort с ${formatDateRu(checkIn)} по ${formatDateRu(checkOut)} (${nights} ночей), ${guests} гостей. Имя: ${name}. Итого: ${formatPrice(total)}.${comment ? ` Комментарий: ${comment}` : ""}`;
   };
 
-  const handleSubmit = async (channel: "whatsapp") => {
+  const handleSubmit = async () => {
     setError(null);
     if (!name.trim() || phone.replace(/\D/g, "").length < 12) {
       setError("Заполните имя и корректный телефон");
@@ -64,9 +64,7 @@ export default function BookingForm({ checkIn, checkOut, total, nights }: Props)
       }
 
       const message = encodeURIComponent(buildMessage());
-      if (channel === "whatsapp") {
-        window.open(`https://wa.me/${CONTACTS.whatsapp}?text=${message}`, "_blank");
-      }
+      window.open(`https://wa.me/${CONTACTS.whatsapp}?text=${message}`, "_blank");
     } catch (e) {
       setError(e instanceof Error ? e.message : "Что-то пошло не так");
     } finally {
@@ -100,7 +98,7 @@ export default function BookingForm({ checkIn, checkOut, total, nights }: Props)
             value={phone}
             onChange={(e) => handlePhoneChange(e.target.value)}
             className="mt-1 w-full rounded-xl border border-ink/15 bg-white px-4 py-3 outline-none transition focus:border-lake"
-            placeholder="+996 508 51 66 51"
+            placeholder="+996 700 000 000"
           />
         </div>
 
@@ -109,7 +107,7 @@ export default function BookingForm({ checkIn, checkOut, total, nights }: Props)
           <input
             type="number"
             min={1}
-            max={8}
+            max={4}
             value={guests}
             onChange={(e) => setGuests(Number(e.target.value))}
             className="mt-1 w-full rounded-xl border border-ink/15 bg-white px-4 py-3 outline-none transition focus:border-lake"
@@ -123,22 +121,20 @@ export default function BookingForm({ checkIn, checkOut, total, nights }: Props)
             onChange={(e) => setComment(e.target.value)}
             rows={3}
             className="mt-1 w-full resize-none rounded-xl border border-ink/15 bg-white px-4 py-3 outline-none transition focus:border-lake"
-            placeholder="Например: едем с собакой, нужна детская кроватка..."
+            placeholder="Например: едем с детьми, нужна доп. кроватка..."
           />
         </div>
 
         {error && <p className="text-sm text-red-600">{error}</p>}
 
-        <div className="grid gap-3 sm:grid-cols-2">
-          <button
-            onClick={() => handleSubmit("whatsapp")}
-            disabled={submitting}
-            className="inline-flex items-center justify-center gap-2 rounded-full bg-lake px-6 py-4 font-medium text-white transition hover:scale-[1.02] disabled:opacity-60"
-          >
-            <Send size={18} />
-            {submitting ? "Отправка..." : "В WhatsApp"}
-          </button>
-        </div>
+        <button
+          onClick={handleSubmit}
+          disabled={submitting}
+          className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-lake px-6 py-4 font-medium text-white transition hover:scale-[1.02] disabled:opacity-60"
+        >
+          <Send size={18} />
+          {submitting ? "Отправка..." : "Отправить заявку в WhatsApp"}
+        </button>
 
         <p className="text-center text-xs text-muted">
           Нажимая кнопку, вы соглашаетесь с условиями бронирования

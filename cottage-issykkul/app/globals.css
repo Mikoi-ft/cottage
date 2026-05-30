@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+/* react-day-picker overrides */
+.rdp {
+  --rdp-accent-color: #2C5F7C;
+  --rdp-background-color: #2C5F7C20;
+  margin: 0;
+}
+
+.rdp-day_disabled {
+  text-decoration: line-through;
+  opacity: 0.4;
+}
+
+.rdp-day_selected {
+  background-color: #2C5F7C !important;
+  color: white;
+}
