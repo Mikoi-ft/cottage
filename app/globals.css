@@ -10,31 +10,54 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* react-day-picker overrides */
+/* ── react-day-picker ── */
 .rdp {
   --rdp-accent-color: #2C5F7C;
-  --rdp-background-color: #2C5F7C20;
+  --rdp-background-color: #2C5F7C14;
   margin: 0;
 }
 
-/* Прошедшие / недоступные даты — бледные */
+.rdp-day {
+  border-radius: 10px;
+  transition: background-color .15s ease;
+}
+
+/* Прошедшие / просто недоступные даты — тихо приглушены, без цвета */
 .rdp-day_disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
-}
-
-/* Занятые брони — выразительно: красный фон + перечёркивание */
-.rdp-booked {
-  background-color: #FBEAEA !important;
-  color: #C24545 !important;
-  text-decoration: line-through;
-  text-decoration-thickness: 2px;
-  border-radius: 8px;
+  color: #C4C4C4 !important;
   opacity: 1 !important;
+  cursor: default;
+}
+
+/* Занятые брони — мягкий тёплый фон + точка-индикатор снизу */
+.rdp-booked {
+  position: relative;
+  background-color: #FCEEEC !important;
+  color: #B5897F !important;
   cursor: not-allowed;
 }
 
-.rdp-day_selected {
+.rdp-booked::after {
+  content: "";
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  background-color: #C97A6D;
+}
+
+/* Выбранный диапазон — фирменный синий */
+.rdp-day_selected,
+.rdp-day_range_start,
+.rdp-day_range_end {
   background-color: #2C5F7C !important;
-  color: white;
+  color: #fff !important;
+}
+
+.rdp-day_range_middle {
+  background-color: #2C5F7C1f !important;
+  color: #1A1A1A !important;
 }

@@ -58,11 +58,11 @@ export default function BookingCalendar({ bookedDates }: Props) {
                 showOutsideDays
                 className="rdp-custom"
               />
-              <div className="mt-4 flex items-center gap-2 text-sm text-muted">
-                <span className="inline-flex h-5 w-5 items-center justify-center rounded bg-[#FBEAEA] text-[#C24545] line-through">
-                  &nbsp;
+              <div className="mt-5 flex items-center gap-2 text-sm text-muted">
+                <span className="relative inline-flex h-6 w-6 items-center justify-center rounded-lg bg-[#FCEEEC] text-[#C97A6D]">
+                  <span className="absolute bottom-1 h-1 w-1 rounded-full bg-[#C97A6D]" />
                 </span>
-                <span>— даты заняты</span>
+                <span>— занято</span>
               </div>
             </div>
           </div>
