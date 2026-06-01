@@ -17,9 +17,21 @@ body {
   margin: 0;
 }
 
+/* Прошедшие / недоступные даты — бледные */
 .rdp-day_disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Занятые брони — выразительно: красный фон + перечёркивание */
+.rdp-booked {
+  background-color: #FBEAEA !important;
+  color: #C24545 !important;
   text-decoration: line-through;
-  opacity: 0.4;
+  text-decoration-thickness: 2px;
+  border-radius: 8px;
+  opacity: 1 !important;
+  cursor: not-allowed;
 }
 
 .rdp-day_selected {

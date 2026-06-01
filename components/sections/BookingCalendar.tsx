@@ -45,16 +45,26 @@ export default function BookingCalendar({ bookedDates }: Props) {
 
         <div className="mt-10 grid gap-10 lg:grid-cols-2 lg:gap-16">
           <div className="flex justify-center">
-            <DayPicker
-              mode="range"
-              selected={range}
-              onSelect={setRange}
-              disabled={[{ before: today }, ...disabledRanges]}
-              locale={ru}
-              numberOfMonths={1}
-              showOutsideDays
-              className="rdp-custom"
-            />
+            <div>
+              <DayPicker
+                mode="range"
+                selected={range}
+                onSelect={setRange}
+                disabled={[{ before: today }, ...disabledRanges]}
+                modifiers={{ booked: disabledRanges }}
+                modifiersClassNames={{ booked: "rdp-booked" }}
+                locale={ru}
+                numberOfMonths={1}
+                showOutsideDays
+                className="rdp-custom"
+              />
+              <div className="mt-4 flex items-center gap-2 text-sm text-muted">
+                <span className="inline-flex h-5 w-5 items-center justify-center rounded bg-[#FBEAEA] text-[#C24545] line-through">
+                  &nbsp;
+                </span>
+                <span>— даты заняты</span>
+              </div>
+            </div>
           </div>
 
           <div>
