@@ -8,7 +8,7 @@ export default function Hero() {
     <section className="relative h-screen min-h-[600px] w-full overflow-hidden">
       {/* TODO: заменить на реальное фото коттеджа на закате */}
       <Image
-        src="/images/hero-placeholder.jpg"
+        src="/images/hero.webp"
         alt={COTTAGE.name}
         fill
         priority

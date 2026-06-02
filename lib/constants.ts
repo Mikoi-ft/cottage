@@ -1,4 +1,4 @@
-import { Bed, Users, Wifi, Tv, Microwave, WashingMachine, Flame, UtensilsCrossed, Waves, Baby } from "lucide-react";
+import { Bed, Users, Wifi, Tv, Microwave, WashingMachine, Flame, UtensilsCrossed, Waves, Baby, Car } from "lucide-react";
 
 export const COTTAGE = {
   name: "Квартира в Chaika Resort",
@@ -24,6 +24,7 @@ export const AMENITIES = [
   { icon: Flame, label: "Мангал" },
   { icon: Waves, label: "Первая береговая линия" },
   { icon: Baby, label: "Аниматоры для детей (лето)" },
+  { icon: Car, label: "Парковочная зона" },
 ];
 
 // Ценовые периоды по конкретным датам (формат MM-DD)
@@ -44,45 +45,27 @@ export const INCLUDED = [
   "Постельное бельё и полотенца",
   "Вся кухонная утварь и техника",
   "Wi-Fi и телевизор",
-  "Доступ к территории резорта (3 ресторана и столовая)",
+  "Доступ к территории резорта",
 ];
 
 export const RESORT_FEATURES = [
   "3 ресторана и столовая на территории",
   "Первая береговая линия, 3 вида пляжа",
-  "Летом — бесплатные аниматоры для детей",
+  "Летом - бесплатные аниматоры для детей",
+  "Футбольное, баскетбольное поле, площадки для детей",
 ];
 
 // TODO: реальные фото — заменить на URL из Supabase Storage или Cloudinary
 export const GALLERY = [
-  { src: "/images/placeholder-1.jpg", alt: "Вид на озеро" },
-  { src: "/images/placeholder-2.jpg", alt: "Спальня с двуспальной кроватью" },
-  { src: "/images/placeholder-3.jpg", alt: "Гостиная-кухня" },
-  { src: "/images/placeholder-4.jpg", alt: "Кухонная зона" },
-  { src: "/images/placeholder-5.jpg", alt: "Раскладной диван в гостиной" },
-  { src: "/images/placeholder-6.jpg", alt: "Мангальная зона" },
-  { src: "/images/placeholder-7.jpg", alt: "Территория резорта" },
-  { src: "/images/placeholder-8.jpg", alt: "Пляж и берег" },
+  { src: "/images/beach1.webp", alt: "Вид на озеро" },
+  { src: "/images/bed.webp", alt: "Спальня с двуспальной кроватью" },
+  { src: "/images/liveroom.webp", alt: "Гостиная" },
+  { src: "/images/kitchen.webp", alt: "Кухонная зона" },
+  { src: "/images/sky.webp", alt: "Территория резорта" },
+  { src: "/images/beach2.webp", alt: "Пляж и берег" },
 ];
 
 // TODO: реальные отзывы
-export const REVIEWS = [
-  {
-    name: "Айгуль",
-    date: "Август 2025",
-    text: "Отличная квартира, всё чисто и уютно. Дети были в восторге от аниматоров и пляжа. Вернёмся!",
-  },
-  {
-    name: "Денис",
-    date: "Июль 2025",
-    text: "Первая линия — до воды пара минут. Рестораны прямо на территории, очень удобно с детьми.",
-  },
-  {
-    name: "Семья Касымовых",
-    date: "Июнь 2025",
-    text: "Всё для комфортного проживания: стиралка, кухня, мангал. Бронировали на неделю — не пожалели.",
-  },
-];
 
 export const FAQ = [
   {
