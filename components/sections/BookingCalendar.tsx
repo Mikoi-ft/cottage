@@ -9,7 +9,7 @@ import { INCLUDED, MIN_NIGHTS, PRICE_PERIODS, LONG_STAY_DISCOUNT } from "@/lib/c
 import BookingForm from "./BookingForm";
 
 interface Props {
-  bookedDates: { check_in: string; check_out: string }[];
+  bookedDates: { check_in: string; check_out: string; guest_name?: string }[];
 }
 
 export default function BookingCalendar({ bookedDates }: Props) {
@@ -23,6 +23,22 @@ export default function BookingCalendar({ bookedDates }: Props) {
       })),
     [bookedDates]
   );
+
+  // Карта "YYYY-MM-DD" → имя гостя, для подсказки на занятых датах
+  const guestByDate = useMemo(() => {
+    const map = new Map<string, string>();
+    bookedDates.forEach((b) => {
+      if (!b.guest_name) return;
+      const cur = new Date(b.check_in);
+      const end = new Date(b.check_out);
+      while (cur < end) {
+        const key = cur.toISOString().split("T")[0];
+        map.set(key, b.guest_name);
+        cur.setDate(cur.getDate() + 1);
+      }
+    });
+    return map;
+  }, [bookedDates]);
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
@@ -53,6 +69,18 @@ export default function BookingCalendar({ bookedDates }: Props) {
                 disabled={[{ before: today }, ...disabledRanges]}
                 modifiers={{ booked: disabledRanges }}
                 modifiersClassNames={{ booked: "rdp-booked" }}
+                components={{
+                  DayButton: (props) => {
+                    const key = props.day.date.toISOString().split("T")[0];
+                    const guest = guestByDate.get(key);
+                    return (
+                      <button
+                        {...props}
+                        title={guest ? `Занято: ${guest}` : undefined}
+                      />
+                    );
+                  },
+                }}
                 locale={ru}
                 numberOfMonths={1}
                 showOutsideDays

@@ -3,7 +3,7 @@ import { Bed, Users, Wifi, Tv, Microwave, WashingMachine, Flame, UtensilsCrossed
 export const COTTAGE = {
   name: "Квартира в Chaika Resort",
   tagline: "Отдых у воды на Иссык-Куле — первая береговая линия",
-  coords: { lat: 42.6411, lng: 76.9897 }, // с. Чон-Сары-Ой, Chaika Resort
+  coords: { lat: 42.606373, lng: 76.970225 }, // Chaika Resort, точная точка
   address: "Chaika Resort, с. Чон-Сары-Ой, Иссык-Кульская область",
   distanceFromBishkek: "230 км от Бишкека · 14 км от Чолпон-Аты",
 };

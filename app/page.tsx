@@ -3,7 +3,6 @@ import Gallery from "@/components/sections/Gallery";
 import Amenities from "@/components/sections/Amenities";
 import Location from "@/components/sections/Location";
 import BookingCalendar from "@/components/sections/BookingCalendar";
-import Reviews from "@/components/sections/Reviews";
 import FAQ from "@/components/sections/FAQ";
 import Footer from "@/components/sections/Footer";
 import LodgingSchema from "@/components/schema/LodgingSchema";
@@ -15,7 +14,7 @@ async function getBookedDates() {
   const supabase = createClient();
   const { data } = await supabase
     .from("bookings")
-    .select("check_in, check_out")
+    .select("check_in, check_out, guest_name")
     .eq("status", "confirmed")
     .gte("check_out", new Date().toISOString().split("T")[0]);
 
@@ -30,11 +29,10 @@ export default async function HomePage() {
       <LodgingSchema />
       <main>
         <Hero />
+        <BookingCalendar bookedDates={bookedDates} />
         <Gallery />
         <Amenities />
         <Location />
-        <BookingCalendar bookedDates={bookedDates} />
-        <Reviews />
         <FAQ />
         <Footer />
       </main>
